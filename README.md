@@ -1,6 +1,7 @@
 ### Deps
 ```
 go get -u github.com/gofiber/fiber/v2
+go get -u github.com/gofiber/redirect/v2
 go get -u github.com/gofiber/swagger
 ```
 

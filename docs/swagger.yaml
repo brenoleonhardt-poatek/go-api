@@ -1,4 +1,4 @@
-basePath: /api/v1
+basePath: /
 consumes:
 - application/json
 definitions:
@@ -25,7 +25,7 @@ info:
   title: Swagger Example API
   version: "1.0"
 paths:
-  /{group_id}/users/{user_id}/accounts:
+  /hello:
     get:
       consumes:
       - application/json

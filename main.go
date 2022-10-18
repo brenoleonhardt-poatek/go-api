@@ -38,12 +38,14 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Get("/*", swagger.HandlerDefault)
-
+	app.Get("/docs/*", swagger.HandlerDefault)
 
 	api := app.Group("/api/v1")
-
 	api.Get("/", handler)
+
+	app.Get("/*", func(c *fiber.Ctx) error {
+		return c.Redirect("/docs")
+	})
 
 	app.Listen(":3000")
 }
@@ -62,8 +64,9 @@ func main() {
 // @Failure     404           {string} string "ok"
 // @Failure     500           {string} string "ok"
 // @Security    ApiKeyAuth
-// @Router      /{group_id}/users/{user_id}/accounts [get]
+// @Router      /hello [get]
 func handler(c *fiber.Ctx) error {
+	// @Router /{group_id}/users/{user_id}/accounts [get]
 	q := c.Query("q")
 	fmt.Printf("q: %v\n", q)
 	return c.SendString("Hello, World!")
